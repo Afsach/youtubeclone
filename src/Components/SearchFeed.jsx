@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { Box, Typography } from '@mui/material';
-import {Videos} from './';
+import { Videos } from './';
 import { fetchFromApi } from './utils/fetchFromApi';
 import { useParams } from 'react-router-dom';
 
@@ -13,38 +13,36 @@ const SearchFeed = () => {
 
   useEffect(() => {
     fetchFromApi(`search?part=snippet&q=${searchTerm}`)
-    .then((data) => setVideos(data.items));
-  },[searchTerm]);
+      .then((data) => setVideos(data.items));
+  }, [searchTerm]);
 
   return (
     <Box
-    p={2}
-    sx={{
-      overflowY : 'auto',
-      height : '90vh',
-      flex : 2
-    }}
+      p={2}
+      sx={{
+        overflowY: 'auto',
+        height: '90vh',
+        flex: 2
+      }}
     >
-      <Typography 
-      variant='h4'
-      fontWeight='bold'
-      mb={2}
-      sx= {{color : 'white'}}
+      <Typography
+        variant='h4'
+        fontWeight='bold'
+        mb={2}
+        sx={{ color: 'white' }}
       >
         Search result for : 
         <span
-        style={{
-          color : '#F31530',
-
-        }}
+          style={{
+            color: '#F31530'
+          }}
         >
-         {searchTerm} 
-        </span> 
-        Videos
+          {searchTerm}
+        </span>
       </Typography>
       <Box display="flex" p="2">
-        <Box sx={{  mr: { sm: '100px' }}}/>
-          <Videos videos={videos} />
+        <Box sx={{ mr: { sm: '100px' } }} />
+        <Videos videos={videos} />
       </Box>
     </Box>
   )
